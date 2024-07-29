@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Dashboard from './pages/Dashboard';
+import Calendar from './pages/Calendar';
+import KanbanBoard from './pages/Kanban';
+import Tables from './pages/Tables';
+import Charts from './pages/Charts';
+import ThemeSwitcher from './components/ThemeSwitcher';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <ThemeSwitcher>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/kanban" element={<KanbanBoard />} />
+          <Route path="/tables" element={<Tables />} />
+          <Route path="/charts" element={<Charts />} />
+        </Routes>
+      </ThemeSwitcher>
+    </Router>
   );
 }
 
